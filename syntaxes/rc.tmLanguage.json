@@ -1,0 +1,267 @@
+{
+	"$schema": "https://raw.githubusercontent.com/martinring/tmlanguage/master/tmlanguage.json",
+	"name": "Android Init RC File",
+	"patterns": [
+		{
+			"include": "#comment"
+		},
+		{
+			"include": "#action"
+		},
+		{
+			"include": "#command"
+		},
+		{
+			"include": "#service"
+		},
+		{
+			"include": "#option"
+		},
+		{
+			"include": "#import"
+		}
+	],
+	"repository": {
+		"action": {
+			"match": "^\\s*(on)\\s+(.*)",
+			"captures": {
+				"1": {
+					"name": "keyword.other.rc"
+				},
+				"2": {
+					"patterns": [
+						{
+							"include": "#trigger-expression"
+						}
+					]
+				}
+			},
+			"patterns": [
+				{
+					"include": "#comment"
+				},
+				{
+					"include": "#string"
+				},
+				{
+					"include": "#number"
+				}
+			]
+		},
+		"service": {
+			"match": "(^|\\G)\\s*(service)\\s+([^\\s]+)\\s+",
+			"captures": {
+				"2": {
+					"name": "keyword.other.rc"
+				},
+				"3": {
+					"name": "entity.name.class.rc"
+				}
+			}
+		},
+		"service-shell": {
+			"match": "(^|\\G)\\s*(service)\\s+([^\\s]+)\\s+(.*)",
+			"captures": {
+				"2": {
+					"name": "keyword.other.rc"
+				},
+				"3": {
+					"name": "entity.name.class.rc"
+				},
+				"4": {
+					"name": "meta.embedded.inline.shellscript",
+					"patterns": [
+						{
+							"include": "source.cpp"
+						}
+					]
+				}
+			},
+			"patterns": [
+				{
+					"include": "source.cpp"
+				}
+			]
+		},
+		"import": {
+			"match": "^\\s*(import)\\s+([^\\0]+)",
+			"captures": {
+				"1": {
+					"name": "keyword.other.rc"
+				},
+				"2": {
+					"name": "string.unquoted.rc"
+				}
+			},
+			"patterns": [
+				{
+					"include": "#comment"
+				}
+			]
+		},
+		"option": {
+			"match": "^\\s*(capabilities|class|console|critical|disabled|enter_namespace|file|gentle_kill|group|interface|ioprio|keycodes|memcg.[\\w]+|namespace|oneshot|onrestart|override|priority|reboot_on_failure|restart_period|rlimit|seclabel|setenv|shutdown|sigstop|socket|stdio_to_kmsg|task_profiles|timeout_period|updatable|user|writepid)\\s+(.*)",
+			"captures": {
+				"1": {
+					"name": "keyword.control.rc"
+				},
+				"2": {
+					"name": "support.variable.rc",
+					"patterns": [
+						{
+							"include": "#string"
+						},
+						{
+							"include": "#number"
+						},
+						{
+							"include": "#boolean"
+						}
+					]
+				}
+			}
+		},
+		"command": {
+			"patterns": [
+				{
+					"begin": "^\\s*(write)\\s+(.*)\\s+\"",
+					"beginCaptures": {
+						"1": {
+							"name": "keyword.control.rc"
+						},
+						"2": {
+							"name": "support.variable.rc",
+							"patterns": [
+								{
+									"include": "#string"
+								},
+								{
+									"include": "#number"
+								},
+								{
+									"include": "#boolean"
+								}
+							]
+						}
+					},
+					"end": "\""
+				},
+				{
+					"match": "^\\s*(bootchart|chmod|chown|class_start|class_stop|class_reset|class_restart|copy|copy_per_line|domainname|enable|exec|exec_background|export|hostname|ifup|insmod|interface_start|interface_stop|interface_restart|load_exports|load_system_props|load_persist_props|loglevel|mark_post_data|mkdir|mount_all|mount|perform_apex_config|restorecon|restorecon_recursive|rm|rmdir|readahead|setprop|setrlimit|swapon_all|symlink|sysclktz|trigger|umount|umount_all|verity_update_state|wait|wait_for_prop|write)\\s+(.*)",
+					"captures": {
+						"1": {
+							"name": "keyword.control.rc"
+						},
+						"2": {
+							"name": "support.variable.rc",
+							"patterns": [
+								{
+									"include": "#string"
+								},
+								{
+									"include": "#number"
+								},
+								{
+									"include": "#boolean"
+								}
+							]
+						}
+					}
+				},
+				{
+					"match": "^\\s*(exec_start|restart|start|stop)(\\s+(--only-if-running))?\\s+(.*)",
+					"captures": {
+						"1": {
+							"name": "keyword.control.rc"
+						},
+						"3": {
+							"name": "keyword.other.rc"
+						},
+						"4": {
+							"name": "entity.name.class.rc",
+							"patterns": [
+								{
+									"include": "#string"
+								},
+								{
+									"include": "#number"
+								},
+								{
+									"include": "#boolean"
+								}
+							]
+						}
+					}
+				}
+			]
+		},
+		"trigger-expression": {
+			"match": "([^\\s]+)\\s*((&&)\\s*([^\\s]+))*",
+			"captures": {
+				"1": {
+					"patterns": [
+						{
+							"include": "#trigger"
+						}
+					]
+				},
+				"3": {
+					"name": "keyword.operator.rc"
+				},
+				"4": {
+					"patterns": [
+						{
+							"include": "#trigger-expression"
+						}
+					]
+				}
+			}
+		},
+		"trigger": {
+			"patterns": [
+				{
+					"include": "#string"
+				},
+				{
+					"include": "#number"
+				},
+				{
+					"include": "#boolean"
+				},
+				{
+					"name": "support.variable.rc",
+					"match": "[\\w-]+"
+				}
+			]
+		},
+		"string": {
+			"name": "string.quoted.double.rc",
+			"begin": "\"",
+			"end": "\"",
+			"patterns": [
+				{
+					"name": "constant.character.escape.rc",
+					"match": "\\\\."
+				}
+			]
+		},
+		"number": {
+			"name": "constant.numeric.rc",
+			"match": "\\b((0(x|X)[0-9a-fA-F]*)|(([0-9]+\\.?[0-9]*)|(\\.[0-9]+))((e|E)(\\+|-)?[0-9]+)?)\\b"
+		},
+		"boolean": {
+			"name": "constant.language.rc",
+			"match": "\\b(true|false)\\b"
+		},
+		"comment": {
+			"patterns": [
+				{
+					"name": "comment.line.double-slash.proto",
+					"begin": "#",
+					"end": "$\\n?"
+				}
+			]
+		}
+	},
+	"scopeName": "source.rc"
+}
