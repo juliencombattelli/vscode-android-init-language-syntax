@@ -1,4 +1,4 @@
-name: Package and publish
+name: Package
 
 on:
   workflow_dispatch:
@@ -12,7 +12,7 @@ on:
       - rel/*
 
 jobs:
-  package-and-publish:
+  package:
     runs-on: ubuntu-latest
     steps:
 
@@ -25,13 +25,10 @@ jobs:
 
       - run: npm install -g @vscode/vsce
 
-      - run: vsce package
+      - run: vsce package --baseContentUrl https://github.com/juliencombattelli/vscode-android-init-language-syntax/blob/${{ github.sha }}
 
-      - name: Upload Artifacts
+      - name: Upload artifacts
         uses: actions/upload-artifact@v3
         with:
-          name: Artifacts
-          path: |
-            **/*.vsix
-            **/*.tgz
-            !**/node_modules
+          name: artifacts-${{ github.sha }}
+          path: android-init-language-syntax-*.vsix

@@ -1,0 +1,42 @@
+name: Package and publish release artifact
+
+on:
+  release:
+    types: [created]
+
+jobs:
+  package-and-publish-release-artifact:
+    permissions: write-all
+    runs-on: ubuntu-latest
+
+    steps:
+
+      - uses: actions/checkout@v3
+
+      - name: Using Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: 21
+
+      - run: |
+          npm install -g @vscode/vsce
+          npm install -g ovsx
+
+      - name: Create release artifact
+        run: vsce package --baseContentUrl https://github.com/juliencombattelli/vscode-android-init-language-syntax/blob/${{ github.ref_name }}
+
+      - name: Upload release artifact
+        uses: actions/upload-release-asset@v1
+        env:
+          GITHUB_TOKEN: ${{ github.token }}
+        with:
+          upload_url: ${{ github.event.release.upload_url }}
+          asset_path: ./android-init-language-syntax-${{ github.ref_name }}.vsix
+          asset_name: android-init-language-syntax-${{ github.ref_name }}.vsix
+          asset_content_type: application/octet-stream
+
+      - name: Publish extension to Microsoft marketplace
+        run: vsce publish --baseContentUrl https://github.com/juliencombattelli/vscode-android-init-language-syntax/blob/${{ github.ref_name }}/ --pat ${{ secrets.VSCE_TOKEN }} ${{ github.ref_name }}
+
+      - name: Publish extension to open-vsx.org
+        run: npx ovsx publish --pat ${{ secrets.OPENVSX_TOKEN }} ./android-init-language-syntax-${{ github.ref_name }}.vsix
