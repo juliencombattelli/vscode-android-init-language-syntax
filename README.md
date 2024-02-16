@@ -5,7 +5,7 @@ This extension adds syntax highlighting for the Android Init *.rc files.
 ## Known Issues
 
 This extension is still work in progress and some syntax aspects are not handled
-correctly. You will find identified limitations in [](TODO.md).
+correctly. You will find identified limitations in [TODO.md](https://github.com/juliencombattelli/vscode-android-init-language-syntax/blob/main/TODO.md).
 
 ## Release Notes
 
