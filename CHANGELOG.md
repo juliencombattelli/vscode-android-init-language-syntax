@@ -4,7 +4,8 @@ All notable changes to the "android-init-language-syntax" extension will be docu
 
 Check [Keep a Changelog](http://keepachangelog.com/) for recommendations on how to structure this file.
 
-## [Unreleased]
+
+## [0.2.0] - 2024-02-19
 
 ### Added
 
@@ -14,7 +15,7 @@ Check [Keep a Changelog](http://keepachangelog.com/) for recommendations on how 
 - Update the [CHANGELOG.md](CHANGELOG.md).
 
 
-## [0.1.0] - date
+## [0.1.0] - 2024-02-16
 
 First development release of Android Init Language Syntax Extension.
 
