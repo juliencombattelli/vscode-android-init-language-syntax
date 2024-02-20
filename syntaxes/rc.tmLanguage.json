@@ -260,7 +260,7 @@
 			"patterns": [
 				{
 					"name": "comment.line.double-slash.proto",
-					"begin": "#",
+					"begin": "(?<!\\\\)#",
 					"end": "$\\n?"
 				}
 			]
