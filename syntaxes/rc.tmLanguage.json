@@ -109,6 +109,9 @@
 					"name": "support.variable.rc",
 					"patterns": [
 						{
+							"include": "#comment"
+						},
+						{
 							"include": "#string"
 						},
 						{
