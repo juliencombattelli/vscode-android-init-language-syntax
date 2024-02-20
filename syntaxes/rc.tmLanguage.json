@@ -127,49 +127,27 @@
 		"command": {
 			"patterns": [
 				{
-					"begin": "^\\s*(write)\\s+(.*)\\s+\"",
+					"begin": "^\\s*(bootchart|chmod|chown|class_start|class_stop|class_reset|class_restart|copy|copy_per_line|domainname|enable|exec|exec_background|export|hostname|ifup|insmod|interface_start|interface_stop|interface_restart|load_exports|load_system_props|load_persist_props|loglevel|mark_post_data|mkdir|mount_all|mount|perform_apex_config|restorecon|restorecon_recursive|rm|rmdir|readahead|setprop|setrlimit|swapon_all|symlink|sysclktz|trigger|umount|umount_all|verity_update_state|wait|wait_for_prop|write)\\s+",
 					"beginCaptures": {
 						"1": {
-							"name": "keyword.control.rc"
-						},
-						"2": {
-							"name": "support.variable.rc",
-							"patterns": [
-								{
-									"include": "#string"
-								},
-								{
-									"include": "#number"
-								},
-								{
-									"include": "#boolean"
-								}
-							]
+							"name": "keyword.control.command.rc"
 						}
 					},
-					"end": "\""
-				},
-				{
-					"match": "^\\s*(bootchart|chmod|chown|class_start|class_stop|class_reset|class_restart|copy|copy_per_line|domainname|enable|exec|exec_background|export|hostname|ifup|insmod|interface_start|interface_stop|interface_restart|load_exports|load_system_props|load_persist_props|loglevel|mark_post_data|mkdir|mount_all|mount|perform_apex_config|restorecon|restorecon_recursive|rm|rmdir|readahead|setprop|setrlimit|swapon_all|symlink|sysclktz|trigger|umount|umount_all|verity_update_state|wait|wait_for_prop|write)\\s+(.*)",
-					"captures": {
-						"1": {
-							"name": "keyword.control.rc"
+					"end": "\\n",
+					"patterns": [
+						{
+							"include": "#comment"
 						},
-						"2": {
-							"name": "support.variable.rc",
-							"patterns": [
-								{
-									"include": "#string"
-								},
-								{
-									"include": "#number"
-								},
-								{
-									"include": "#boolean"
-								}
-							]
+						{
+							"include": "#string"
+						},
+						{
+							"include": "#number"
+						},
+						{
+							"include": "#boolean"
 						}
-					}
+					]
 				},
 				{
 					"match": "^\\s*(exec_start|restart|start|stop)(\\s+(--only-if-running))?\\s+(.*)",
@@ -199,26 +177,39 @@
 			]
 		},
 		"trigger-expression": {
-			"match": "([^\\s]+)\\s*((&&)\\s*([^\\s]+))*",
-			"captures": {
-				"1": {
+			"patterns": [
+				{
+					"include": "#trigger"
+				},
+				{
+					"begin": "\\s*(&&)\\s*",
+					"beginCaptures": {
+						"1": {
+							"name": "keyword.operator.trigger.and.rc"
+						}
+					},
+					"end": "$",
 					"patterns": [
 						{
-							"include": "#trigger"
+							"include": "#trigger-expression"
 						}
 					]
 				},
-				"3": {
-					"name": "keyword.operator.rc"
-				},
-				"4": {
+				{
+					"begin": "(\\\\)\\n",
+					"beginCaptures": {
+						"1": {
+							"name": "constant.character.escape.newline.rc"
+						}
+					},
+					"end": "$",
 					"patterns": [
 						{
 							"include": "#trigger-expression"
 						}
 					]
 				}
-			}
+			]
 		},
 		"trigger": {
 			"patterns": [
