@@ -49,12 +49,12 @@
 			]
 		},
 		"service": {
-			"match": "(^|\\G)\\s*(service)\\s+([^\\s]+)\\s+",
+			"match": "^\\s*(service)\\s+([^\\s]+)\\s+",
 			"captures": {
-				"2": {
+				"1": {
 					"name": "keyword.other.rc"
 				},
-				"3": {
+				"2": {
 					"name": "entity.name.class.rc"
 				}
 			}
