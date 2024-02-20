@@ -26,7 +26,7 @@
 			"begin": "^\\s*(on)\\s+",
 			"beginCaptures": {
 				"1": {
-					"name": "keyword.other.rc"
+					"name": "keyword.other.on.rc"
 				}
 			},
 			"end": "\\n",
@@ -43,10 +43,10 @@
 			"begin": "^\\s*(service)\\s+([^\\s]+)\\s*",
 			"beginCaptures": {
 				"1": {
-					"name": "keyword.other.rc"
+					"name": "keyword.other.service.rc"
 				},
 				"2": {
-					"name": "entity.name.class.rc"
+					"name": "entity.name.class.service.rc"
 				}
 			},
 			"end": "\\n",
@@ -87,7 +87,7 @@
 			"match": "^\\s*(import)\\s+([^\\0]+)",
 			"captures": {
 				"1": {
-					"name": "keyword.other.rc"
+					"name": "keyword.other.import.rc"
 				},
 				"2": {
 					"name": "string.unquoted.rc"
@@ -103,7 +103,7 @@
 			"match": "^\\s*(capabilities|class|console|critical|disabled|enter_namespace|file|gentle_kill|group|interface|ioprio|keycodes|memcg.[\\w]+|namespace|oneshot|onrestart|override|priority|reboot_on_failure|restart_period|rlimit|seclabel|setenv|shutdown|sigstop|socket|stdio_to_kmsg|task_profiles|timeout_period|updatable|user|writepid)\\s+(.*)",
 			"captures": {
 				"1": {
-					"name": "keyword.control.rc"
+					"name": "keyword.control.option.rc"
 				},
 				"2": {
 					"name": "support.variable.rc",
@@ -229,7 +229,7 @@
 					"include": "#boolean"
 				},
 				{
-					"name": "support.variable.rc",
+					"name": "support.variable.trigger.rc",
 					"match": "[\\w-]+"
 				}
 			]
