@@ -23,28 +23,19 @@
 	],
 	"repository": {
 		"action": {
-			"match": "^\\s*(on)\\s+(.*)",
-			"captures": {
+			"begin": "^\\s*(on)\\s+",
+			"beginCaptures": {
 				"1": {
 					"name": "keyword.other.rc"
-				},
-				"2": {
-					"patterns": [
-						{
-							"include": "#trigger-expression"
-						}
-					]
 				}
 			},
+				"end": "\\n",
 			"patterns": [
 				{
+					"include": "#trigger-expression"
+				},
+				{
 					"include": "#comment"
-				},
-				{
-					"include": "#string"
-				},
-				{
-					"include": "#number"
 				}
 			]
 		},
