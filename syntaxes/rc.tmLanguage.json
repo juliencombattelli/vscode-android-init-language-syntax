@@ -29,7 +29,7 @@
 					"name": "keyword.other.rc"
 				}
 			},
-				"end": "\\n",
+			"end": "\\n",
 			"patterns": [
 				{
 					"include": "#trigger-expression"
