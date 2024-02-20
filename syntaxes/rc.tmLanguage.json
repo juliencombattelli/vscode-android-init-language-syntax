@@ -40,15 +40,24 @@
 			]
 		},
 		"service": {
-			"match": "^\\s*(service)\\s+([^\\s]+)\\s+",
-			"captures": {
+			"begin": "^\\s*(service)\\s+([^\\s]+)\\s*",
+			"beginCaptures": {
 				"1": {
 					"name": "keyword.other.rc"
 				},
 				"2": {
 					"name": "entity.name.class.rc"
 				}
-			}
+			},
+			"end": "\\n",
+			"patterns": [
+				{
+					"include": "#comment"
+				},
+				{
+					"include": "#string"
+				}
+			]
 		},
 		"service-shell": {
 			"match": "(^|\\G)\\s*(service)\\s+([^\\s]+)\\s+(.*)",
