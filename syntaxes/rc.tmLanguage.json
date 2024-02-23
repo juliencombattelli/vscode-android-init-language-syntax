@@ -56,30 +56,15 @@
 				},
 				{
 					"include": "#option"
-				}
-			]
-		},
-		"service-shell": {
-			"match": "(^|\\G)\\s*(service)\\s+([^\\s]+)\\s+(.*)",
-			"captures": {
-				"2": {
-					"name": "keyword.other.rc"
 				},
-				"3": {
-					"name": "entity.name.class.rc"
-				},
-				"4": {
-					"name": "meta.embedded.inline.shellscript",
-					"patterns": [
+				{
+					"_comment": "Currently not working",
+					"_name": "meta.embedded.inline.shellscript",
+					"_patterns": [
 						{
-							"include": "source.cpp"
+							"include": "source.shell"
 						}
 					]
-				}
-			},
-			"patterns": [
-				{
-					"include": "source.cpp"
 				}
 			]
 		},
