@@ -2,7 +2,7 @@
 
 - [x] Handle line continuation with backslash (cf. system/etc/init/init-debug.rc)
 - [ ] Add shell syntax highlight for service commands
-- [ ] Colorize property expansion differently that the rest of the commands/options value and in imports
+- [x] Colorize property expansion differently that the rest of the commands/options value and in imports
       (for imports cf. system/system_ext/etc/init/init.gsi.rc)
 - [ ] Colorize : and . as operators everywhere
 - [ ] Do not colorize numbers inside strings in commands/options value

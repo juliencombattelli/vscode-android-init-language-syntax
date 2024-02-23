@@ -32,6 +32,9 @@
 					"include": "#trigger-expression"
 				},
 				{
+					"include": "#property-expansion"
+				},
+				{
 					"include": "#command"
 				}
 			]
@@ -55,6 +58,9 @@
 					"include": "#string"
 				},
 				{
+					"include": "#property-expansion"
+				},
+				{
 					"include": "#option"
 				},
 				{
@@ -75,7 +81,12 @@
 					"name": "keyword.other.import.rc"
 				},
 				"2": {
-					"name": "string.unquoted.rc"
+					"name": "string.unquoted.rc",
+					"patterns": [
+						{
+							"include": "#property-expansion"
+						}
+					]
 				}
 			},
 			"patterns": [
@@ -104,6 +115,9 @@
 						},
 						{
 							"include": "#boolean"
+						},
+						{
+							"include": "#property-expansion"
 						}
 					]
 				}
@@ -131,6 +145,9 @@
 						},
 						{
 							"include": "#boolean"
+						},
+						{
+							"include": "#property-expansion"
 						}
 					]
 				},
@@ -147,13 +164,10 @@
 							"name": "entity.name.class.rc",
 							"patterns": [
 								{
-									"include": "#string"
+									"include": "#comment"
 								},
 								{
-									"include": "#number"
-								},
-								{
-									"include": "#boolean"
+									"include": "#property-expansion"
 								}
 							]
 						}
@@ -208,8 +222,69 @@
 					"include": "#boolean"
 				},
 				{
+					"include": "#property-expansion"
+				},
+				{
 					"name": "support.variable.trigger.rc",
 					"match": "[\\w-]+"
+				}
+			]
+		},
+		"property-expansion": {
+			"begin": "(\\$)(\\{)",
+			"end": "\\}",
+			"beginCaptures": {
+				"1": {
+					"name": "keyword.operator.expansion.property.rc"
+				},
+				"2": {
+					"name": "keyword.operator.expansion.property.rc"
+				}
+			},
+			"endCaptures": {
+				"0": {
+					"name": "keyword.operator.expansion.property.rc"
+				}
+			},
+			"contentName": "string.interpolated.property.rc",
+			"patterns": [
+				{
+					"match": "\\.",
+					"name": "keyword.operator.dot-access.property.rc"
+				},
+				{
+					"match": "(:-)([^{}]+)",
+					"_todo": "Add support for nested property expansion",
+					"captures": {
+						"1":{
+							"name": "keyword.operator.expansion.property.default.rc"
+						},
+						"2": {
+							"name": "meta.expansion.property.default.rc",
+							"patterns": [
+								{
+									"include": "#number"
+								},
+								{
+									"include": "#boolean"
+								},
+								{
+									"include": "#string"
+								}
+							]
+						}
+					}
+				},
+				{
+					"match": ":-",
+					"name": "keyword.operator.expansion.property.default.rc"
+				},
+				{
+					"match": "(?<!\\w)[a-zA-Z_0-9-]+(?!\\w)",
+					"name": "variable.other.normal.rc"
+				},
+				{
+					"include": "#property-expansion"
 				}
 			]
 		},
