@@ -5,6 +5,7 @@
 - [x] Colorize property expansion differently that the rest of the commands/options value and in imports
       (for imports cf. system/system_ext/etc/init/init.gsi.rc)
 - [ ] Colorize : and . as operators everywhere
+- [ ] Colorize property value in trigger `property:<prop>=<value>`
 - [ ] Do not colorize numbers inside strings in commands/options value
 - [ ] Maybe handle all lines (after on as commands | after service as option) until next block
       => Allow to avoid listing all supported commands/options for a better maintainability
@@ -13,3 +14,5 @@
 - [ ] Colorize minus operator correctly in numbers (cf. system/etc/init/update_verifier.rc)
 - [ ] Colorize , as operator in reboot_on_failure option (cf. system/etc/init/vold.rc)
 - [ ] Colorize ueventd.rc which has a different syntax that other rc files
+- [ ] Handle nested property expansion
+- [ ] Add action/option-specific highlight
