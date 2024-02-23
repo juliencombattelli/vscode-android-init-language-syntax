@@ -23,7 +23,7 @@
 					"name": "keyword.other.on.rc"
 				}
 			},
-			"end": "\\n",
+			"end": "^(?=\\s*(on|service|import)\\s+)",
 			"patterns": [
 				{
 					"include": "#comment"
@@ -46,7 +46,7 @@
 					"name": "entity.name.class.service.rc"
 				}
 			},
-			"end": "\\n",
+			"end": "^(?=\\s*(on|service|import)\\s+)",
 			"patterns": [
 				{
 					"include": "#comment"
