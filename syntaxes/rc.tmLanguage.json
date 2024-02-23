@@ -32,6 +32,9 @@
 			"end": "\\n",
 			"patterns": [
 				{
+					"include": "#comment"
+				},
+				{
 					"include": "#trigger-expression"
 				},
 				{
