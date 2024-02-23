@@ -9,13 +9,7 @@
 			"include": "#action"
 		},
 		{
-			"include": "#command"
-		},
-		{
 			"include": "#service"
-		},
-		{
-			"include": "#option"
 		},
 		{
 			"include": "#import"
@@ -38,7 +32,7 @@
 					"include": "#trigger-expression"
 				},
 				{
-					"include": "#comment"
+					"include": "#command"
 				}
 			]
 		},
@@ -59,6 +53,9 @@
 				},
 				{
 					"include": "#string"
+				},
+				{
+					"include": "#option"
 				}
 			]
 		},
