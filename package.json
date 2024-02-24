@@ -2,7 +2,7 @@
   "name": "android-init-language-syntax",
   "displayName": "Android Init Language Syntax",
   "description": "Syntax highlighting for Android init .rc files.",
-  "version": "0.2.0",
+  "version": "0.3.0",
   "repository": {
     "type": "git",
     "url": "https://github.com/juliencombattelli/vscode-android-init-language-syntax.git"
