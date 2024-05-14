@@ -65,12 +65,7 @@
 				},
 				{
 					"_comment": "Currently not working",
-					"_name": "meta.embedded.inline.shellscript",
-					"_patterns": [
-						{
-							"include": "source.shell"
-						}
-					]
+					"include": "#shellcommand"
 				}
 			]
 		},
@@ -317,6 +312,14 @@
 					"name": "comment.line.double-slash.rc",
 					"begin": "(?<!\\\\)#",
 					"end": "$\\n?"
+				}
+			]
+		},
+		"shellcommand": {
+			"name": "meta.embedded.inline.shellscript",
+			"patterns": [
+				{
+					"include": "source.shell"
 				}
 			]
 		}
