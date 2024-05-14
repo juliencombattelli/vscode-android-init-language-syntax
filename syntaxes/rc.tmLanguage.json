@@ -300,7 +300,12 @@
 		},
 		"number": {
 			"name": "constant.numeric.rc",
-			"match": "((\\+|-)?(0|[1-9]\\d*)?(\\.\\d+)?(?<=\\d)(e-?(0|[1-9]\\d*))?|0x[0-9a-f]+)"
+			"match": "((\\+|-)?(0|[1-9]\\d*)?(\\.\\d+)?(?<=\\d)(e-?(0|[1-9]\\d*))?|0x[0-9a-f]+)",
+			"captures": {
+				"2": {
+					"name": "keyword.operator.arithmetic.rc"
+				}
+			}
 		},
 		"boolean": {
 			"name": "constant.language.rc",
