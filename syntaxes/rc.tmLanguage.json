@@ -254,7 +254,6 @@
 				},
 				{
 					"match": "(:-)([^{}]+)",
-					"_todo": "Add support for nested property expansion",
 					"captures": {
 						"1":{
 							"name": "keyword.operator.expansion.property.default.rc"
