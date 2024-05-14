@@ -314,7 +314,7 @@
 		"comment": {
 			"patterns": [
 				{
-					"name": "comment.line.double-slash.proto",
+					"name": "comment.line.double-slash.rc",
 					"begin": "(?<!\\\\)#",
 					"end": "$\\n?"
 				}
