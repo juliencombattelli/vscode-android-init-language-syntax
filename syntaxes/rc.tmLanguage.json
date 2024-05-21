@@ -103,13 +103,13 @@
 							"include": "#comment"
 						},
 						{
-							"include": "#string"
-						},
-						{
 							"include": "#number"
 						},
 						{
 							"include": "#boolean"
+						},
+						{
+							"include": "#string"
 						},
 						{
 							"include": "#property-expansion"
@@ -133,13 +133,13 @@
 							"include": "#comment"
 						},
 						{
-							"include": "#string"
-						},
-						{
 							"include": "#number"
 						},
 						{
 							"include": "#boolean"
+						},
+						{
+							"include": "#string"
 						},
 						{
 							"include": "#property-expansion"
@@ -208,13 +208,13 @@
 		"trigger": {
 			"patterns": [
 				{
-					"include": "#string"
-				},
-				{
 					"include": "#number"
 				},
 				{
 					"include": "#boolean"
+				},
+				{
+					"include": "#string"
 				},
 				{
 					"include": "#property-expansion"
@@ -295,9 +295,9 @@
 		},
 		"number": {
 			"name": "constant.numeric.rc",
-			"match": "((\\+|-)?(0|[1-9]\\d*)?(\\.\\d+)?(?<=\\d)(e-?(0|[1-9]\\d*))?|0x[0-9a-f]+)",
+			"match": "(\\+|-)?\\b((0(x|X)[0-9a-fA-F]*)|(([0-9]+\\.?[0-9]*)|(\\.[0-9]+))((e|E)(\\+|-)?[0-9]+)?)\\b",
 			"captures": {
-				"2": {
+				"1": {
 					"name": "keyword.operator.arithmetic.rc"
 				}
 			}
