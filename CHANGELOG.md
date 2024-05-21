@@ -6,6 +6,15 @@ Check [Keep a Changelog](http://keepachangelog.com/) for recommendations on how 
 
 ## [Unreleased]
 
+## [0.4.0] - 2024-05-21
+
+### Added
+
+- Add highlight for arithmetic unary operators + and -
+
+### Fixed
+
+- Fix comment definition in the extension configuration
 
 ## [0.3.0] - 2024-02-24
 
@@ -40,7 +49,8 @@ First development release of Android Init Language Syntax Extension.
 - Add basic syntax highlighting for *.rc files.
 
 
-[unreleased]: https://github.com/juliencombattelli/vscode-android-init-language-syntax/compare/0.3.0...HEAD
+[unreleased]: https://github.com/juliencombattelli/vscode-android-init-language-syntax/compare/0.4.0...HEAD
+[0.4.0]: https://github.com/juliencombattelli/vscode-android-init-language-syntax/releases/tag/0.4.0
 [0.3.0]: https://github.com/juliencombattelli/vscode-android-init-language-syntax/releases/tag/0.3.0
 [0.2.0]: https://github.com/juliencombattelli/vscode-android-init-language-syntax/releases/tag/0.2.0
 [0.1.0]: https://github.com/juliencombattelli/vscode-android-init-language-syntax/releases/tag/0.1.0
