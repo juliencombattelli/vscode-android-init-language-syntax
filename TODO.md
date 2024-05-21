@@ -11,7 +11,7 @@
       => Allow to avoid listing all supported commands/options for a better maintainability
 - [x] Handle multiline strings correctly (cf. system/etc/init/logd.rc)
 - [x] Handle comments in commands/options lines correctly (cf. system/etc/init/odsign.rc)
-- [ ] Colorize minus operator correctly in numbers (cf. system/etc/init/update_verifier.rc)
+- [x] Colorize minus operator correctly in numbers (cf. system/etc/init/update_verifier.rc)
 - [ ] Colorize , as operator in reboot_on_failure option (cf. system/etc/init/vold.rc)
 - [ ] Colorize ueventd.rc which has a different syntax that other rc files
 - [x] Handle nested property expansion (won't do: not supported by Init system)
