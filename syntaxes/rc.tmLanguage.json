@@ -65,7 +65,7 @@
 				},
 				{
 					"_comment": "Currently not working",
-					"include": "#shellcommand"
+					"_include": "#shellcommand"
 				}
 			]
 		},
